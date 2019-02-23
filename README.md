@@ -2,13 +2,21 @@
 
 因應服務的擴大，需要管理的應用程式與機器越來越複雜，從部署時間、版本回滾、安全設置、機器效能監控等都日益麻煩；
 
+如果以現在的角度夢想服務架構，我會希望是個
+
+1. 有清楚 Dashboard 掌握所有機器的狀態
+2. 當我寫完程式碼可以有快速且安全的方式部署到測試環境、正式環境
+3. 當流量暴增可以自動 scaling，流量下降自動 scale down
+4. 歡迎補充
+
+夢想的實現需要靠程式碼與工具去填補，將需求具體化  
 希望透過 Containerize 應用程式，解決
 
 1. 開發與部屬環境的差異
 2. 降低部署時間
 3. 版本回滾更迅速
 
-並透過 Container Orchestration 解決
+透過 Container Orchestration 解決
 
 1. 多個 Container 間的協作關係
 2. Container Scale out / Scale up 管理
