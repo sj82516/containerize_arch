@@ -34,6 +34,7 @@
    1. 實際部署
    2. 監控
    3. Zero Downtime 部署與版本回滾
+   4. 加入 Jenkins 自動部署
 5. k8s 結合 GCP
 6. case study：k8s 實戰經驗
 
