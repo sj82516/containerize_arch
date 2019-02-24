@@ -63,7 +63,7 @@ CMD python /app/app.py
 這份文件表達用 ubuntu 當做基底  
 將本機當前的目錄複製到 Image 中的 /app 路徑下  
 接著執行指定的指令 make /app  
-如果要啟動這份 Image，將會執行 python /app/app.py
+如果要啟動這份 Image，預設將會執行 python /app/app.py
 
 透過 `$ docker build`可以製作出 Image
 
