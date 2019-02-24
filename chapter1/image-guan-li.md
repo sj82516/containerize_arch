@@ -1,6 +1,6 @@
 當再本地端開發好 Image，執行 Container 確認沒有問題後，可以將 Image 發佈到 Repository 上，類似於 git push/pull 的概念
 
-Docker 有提供 [Docker Hub](https://hub.docker.com/)，有許多公開的 Image 可以下載，例如 Nodejs / MySQL / Redis / MongoDB 等官方團隊都有管理各自的 Image，用起來也很安心；  
+Docker 有提供 [Docker Hub](https://hub.docker.com/)，有許多公開的 Image 可以下載，也可以付費建立私人的 Registry，例如 Nodejs / MySQL / Redis / MongoDB 等官方團隊都有管理各自的 Image，用起來也很安心；  
 另一方面也有很多熱心的開發者，自己製作出 Image 分享在上面。
 
 搜尋時可以用網頁，也可以在 Terminal 直接搜尋
@@ -18,6 +18,18 @@ search 預設會依照星星數由高至低排序，有兩個參數我個人比�
 
 * limit：限制搜尋返回的結果
 * filter：增加搜尋條件，可以指定 stars / is-automated / is-official 
+
+# Registry
+
+Registry，用來保存 Image 登錄檔， 除了 Docker Hub 外，其他雲端服務如 AWS 有提供 [ECR](https://aws.amazon.com/tw/ecr/)，又或是可以自己透過 Registry，Docker 官方提供用來架設[私有 Registry 的 Image](https://hub.docker.com/_/registry)
+
+用 Docker Image 架設 Docker Registry 來管理 Docker Image 有點拗口，但這也是 Docker 或是說 Container 技術有趣的地方，大多數的應用都可以被製作成 Container 使用，包含 Docker 內還可以在執行 Docker。
+
+# Push / Pull Image
+
+```
+$ docker login
+```
 
 
 
