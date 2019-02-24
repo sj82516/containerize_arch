@@ -101,14 +101,15 @@ npm-debug.log
 $ docker build -f ./Dockerfile -t yuanchieh/server:1.0.0 .
 ```
 
-docker build 必須指定當前路徑，這個路徑會影響如 COPY 的宿主環境路徑，可以是 PATH 或是 GIT URL；  
--f 指定 Dockerfile ，如果沒有則是當前路徑的 Dockerfile；  
--t 是為 image 標上 tag，通常命名習慣是 `[組織名]/[應用程式名]:[版本號碼]`  
-如果沒有指定，則會變成 &lt;none&gt;，後續會非常不好管理
+`$ docker build` 必須指定當前路徑，這個路徑會影響如 COPY 的宿主環境路徑，可以是 PATH 或是 GIT URL；
+
+* -f 指定 Dockerfile ，如果沒有則是當前路徑的 Dockerfile；
+* -t 是為 image 標上 tag，通常命名習慣是 `[組織名]/[應用程式名]:[版本號碼]` 如果沒有指定，則會變成 &lt;none&gt;，後續會非常不好管理
 
 如果是第一次執行，Docker 會依照 Dockerfile 的一行一行指令依序執行，一行指令便是一層 Layer；  
-第一次執行過後就會自動 Cache，如果下次再次執行沒有修改的會就會沿用；  
-這裡有個小 trick 要注意，Dockerfile 中是先 COPY package.json 並安裝完成後才 COPY . . 剩下的部分，原因就在於如果是先 COPY . . 再 npm install，只要目錄下稍有變動即使 package.json 沒有更動整個 Cache 都報廢，在設計上要特別注意。
+第一次執行過後就會自動 Cache，如果下次再次執行沒有修改的會就會沿用。
+
+這裡有個小 trick 要注意，Dockerfile 中是先 COPY package.json 並安裝完成後才 COPY . . 剩下的部分，原因就在於如果是先 COPY . . 再 npm install，只要目錄下稍有變動即使 package.json 沒有更動 Cache 還是會失效，在設計上要特別注意。
 
 # 運行 Container
 
