@@ -172,7 +172,7 @@ volume 可以應用在以下場景
 3. 透過不同 Driver，可以儲存在本機端或是雲端等
 4. 可以先放資料再掛載到 Container 上
 
-其餘像資料庫的資料、Log、靜態資源檔案，都非常適用放在 Volume中，盡量降低 Container 的尺寸。
+其餘像資料庫的資料、Log由 Container 內部運行所產生的資料，都非常適用放在 Volume中，盡量降低 Container 的尺寸，同時不影響搬移的方便性。
 
 ```
 $ docker volume create hello
