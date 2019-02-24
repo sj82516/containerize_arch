@@ -144,7 +144,7 @@ $ docker ps -a
 ## 後景執行
 
 ```
-$ docker run -d -p 8080:8080 yuanchieh/server 
+$ docker run -d -p 8080:8080 yuanchieh/server
 ```
 
 指定 -d 讓 Container 於後景執行
@@ -154,6 +154,9 @@ $ docker run -d -p 8080:8080 yuanchieh/server
 ```
 $ docker commit [container id] [image name]
 ```
+
+有一點要注意的是 Container 當執行完成後會自動退出，所以 Container 內部的程式不能用後景執行，例如說常搭配的 pm2，如果直接用 pm2 啟動 Container 會直接退出；  
+必須改用 pm2-runtime  Docker Image 或是用 pm2-docker 啟用。
 
 ---
 
@@ -177,12 +180,8 @@ $ docker volume create hello
 掛載到 Container 的 /world 的路徑下
 
 ```
-$ docker run -d -p 8080:8080 -v hello:/world yuanchieh/server 
+$ docker run -d -p 8080:8080 -v hello:/world yuanchieh/server
 ```
 
 在使用 volume時，如果希望指定宿主環境的某一個資料夾，目前必須安裝 Docker Plugin  [local-persist](https://github.com/CWSpear/local-persist)
-
-
-
-
 
