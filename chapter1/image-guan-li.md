@@ -29,7 +29,14 @@ Registry，用來保存 Image 登錄檔， 除了 Docker Hub 外，其他雲端�
 
 ```
 $ docker login
+$ docker push [image name: tag]
 ```
+
+要 pull Image 有幾種方式
+
+1. docker run 直接執行，如果本地端沒有該 Image 會從 DockerHub 或是指定的 Registry 拉
+2. Dockerfile 中定義，同樣是本地端沒有就會去遠端拉
+3. `$ docker pull [image name: tag]`
 
 
 
