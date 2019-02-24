@@ -1,6 +1,6 @@
 本章將介紹如何製作 Image、如何運行 Container 與相關的 docker 指令。
 
-製作 Image
+# 製作 Image
 
 參考 Nodejs 官方文件 [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 
@@ -111,6 +111,41 @@ docker build 必須指定當前路徑，這個路徑會影響如 COPY 的宿主�
 這裡有個小 trick 要注意，Dockerfile 中是先 COPY package.json 並安裝完成後才 COPY . . 剩下的部分，原因就在於如果是先 COPY . . 再 npm install，只要目錄下稍有變動即使 package.json 沒有更動整個 Cache 都報廢，在設計上要特別注意。
 
 # 運行 Container
+
+有了Image，可以實際啟用 Container
+
+## 前景執行
+
+```
+$ docker run -p 8080:8080 yuanchieh/server
+```
+
+-p 參數是指定 \[宿主機器port\] 映射至 \[Container port\]，並需要指定 Container 才能收到外部 connection 傳送的資料
+
+如果希望退出直接 Ctrl+C 即可，但 Container 因為是在前景執行所以退出後會自動停止。
+
+如果是希望藉由 terminal 登入 Container 查看，可以改用
+
+```
+$ docker run -it yuanchieh/server /bin/bash
+```
+
+-it 表示已交互模式登入，並分配一個假的輸入終端口，執行 Container時用 /bin/bash 
+
+所有的 container 可以用查看
+
+```
+$ docker ps -a
+```
+
+如果已經停止了，可以用 $ docker restart \[container id\] 重新執行；  
+如果要重新用前景執行，可以用 $ docker attach \[container id\]。
+
+## 後景執行
+
+
+
+
 
 
 
