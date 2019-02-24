@@ -24,20 +24,5 @@
 3. Zero Downtime 升級版本、版本回滾管理
 4. 統一防火牆與安全配置
 
-依序章節逐步往容器化服務架構邁進，階段為
-
-1. Docker 與 Dockerize Nodejs app
-2. Kubernetes\(簡稱 k8s\)
-   1. 基礎介紹
-   2. 操作介面說明
-   3. 網路結構
-3. k8s 結合 Docker
-   1. 實際部署
-   2. 監控
-   3. Zero Downtime 部署與版本回滾
-   4. 加入 Jenkins 自動部署
-4. k8s 結合 GCP
-5. case study：k8s 實戰經驗
-
 
 
