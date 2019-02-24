@@ -130,7 +130,7 @@ $ docker run -p 8080:8080 yuanchieh/server
 $ docker run -it yuanchieh/server /bin/bash
 ```
 
--it 表示已交互模式登入，並分配一個假的輸入終端口，執行 Container時用 /bin/bash 
+-it 表示已交互模式登入，並分配一個假的輸入終端口，執行 Container時用 /bin/bash
 
 所有的 container 可以用查看
 
@@ -143,7 +143,44 @@ $ docker ps -a
 
 ## 後景執行
 
+```
+$ docker run -d -p 8080:8080 yuanchieh/server 
+```
 
+指定 -d 讓 Container 於後景執行
+
+如果 Container 運行一陣子發現有什麼問題，有 log 的話可以將 Container 製作成新的 Image，重新起一個 Container 連線進去 Debug
+
+```
+$ docker commit [container id] [image name]
+```
+
+---
+
+# 永久化保存資料 Docker Volume
+
+先前提到，Container 在運行時其實是在 Image 上多一層可讀寫的 R/W layer，但是這些資料只會保存在 Container 當中，如果希望這些資料永久被保存下來，就必須透過 volume
+
+volume 可以應用在以下場景
+
+1. 適合用於備份
+2. 安全的在 Container 間共享
+3. 透過不同 Driver，可以儲存在本機端或是雲端等
+4. 可以先放資料再掛載到 Container 上
+
+其餘像資料庫的資料、Log、靜態資源檔案，都非常適用放在 Volume中，盡量降低 Container 的尺寸。
+
+```
+$ docker volume create hello
+```
+
+掛載到 Container 的 /world 的路徑下
+
+```
+$ docker run -d -p 8080:8080 -v hello:/world yuanchieh/server 
+```
+
+在使用 volume時，如果希望指定宿主環境的某一個資料夾，目前必須安裝 Docker Plugin  [local-persist](https://github.com/CWSpear/local-persist)
 
 
 
