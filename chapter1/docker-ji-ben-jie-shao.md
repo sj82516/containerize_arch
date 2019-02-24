@@ -54,8 +54,11 @@ Docker 常用於
 2. 與原系統目錄結構隔離
 3. 切換系統根目錄，引導 Linux 系統啟動與急救系統
 
-基於 chroot 機制，Linux 在 2006年加入了 [LXC\(Linux Containers\)](https://zh.wikipedia.org/wiki/LXC) 作業系統層級的虛擬化，將應用軟體系統打包成一個軟體容器（Container），內含應用軟體本身的程式碼，以及所需要的作業系統核心和函式庫。透過統一的命名空間和共用API來分配不同軟體容器的可用硬體資源，創造出應用程式的獨立Sandbox\(沙箱\)執行環境。  
-  
+基於 chroot 機制，Linux 在 2006年加入了 [LXC\(Linux Containers\)](https://zh.wikipedia.org/wiki/LXC) 作業系統層級的虛擬化，將應用軟體系統打包成一個軟體容器（Container），內含應用軟體本身的程式碼，以及所需要的作業系統核心和函式庫。透過統一的命名空間和共用API來分配不同軟體容器的可用硬體資源，創造出應用程式的獨立Sandbox\(沙箱\)執行環境。
+
+虛擬化的另一個好處是 Isolation\(隔離\)，限制每個 Container 運作時只能存取自己的資源，比較安全外同時一個 Container 掛掉也不會影響到其他 Container 的運作；  
+Container 是屬於 Process Level 的 Isolation。
+
 \(以上內容擷取自參考資料\)
 
 Docker 便是基於 LXC開發，所以只能運行在 Linux 環境上，至於 Mac 透過 Virtualbox / WIndows 透過 Hyper-V 先創建Linux VM，在VM中才又運行 Docker。
@@ -75,6 +78,4 @@ Docker 便是基於 LXC開發，所以只能運行在 Linux 環境上，至於 M
 VM會吃掉相當多的資源，如 Windows OS Image 就十幾GB，但好處是要應用程式可以使用OS全部的資源、修改OS層級系統設定、安全\( OS level isolation\)相關的控管 會比較方便；
 
 而 Container 好處在於輕量、啟動快速等。
-
-
 
