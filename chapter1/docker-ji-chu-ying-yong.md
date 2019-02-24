@@ -148,7 +148,7 @@ $ docker ps -a
 $ docker run -d -p 8080:8080 yuanchieh/server
 ```
 
-指定 -d 讓 Container 於後景執行
+* -d 讓 Container 於後景執行
 
 如果 Container 運行一陣子發現有什麼問題，有 log 的話可以將 Container 製作成新的 Image，重新起一個 Container 連線進去 Debug
 
