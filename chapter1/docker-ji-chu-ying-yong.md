@@ -155,7 +155,7 @@ $ docker run -d -p 8080:8080 yuanchieh/server
 $ docker commit [container id] [image name]
 ```
 
-有一點要注意的是 Container 當執行完成後會自動退出，所以 Container 內部的程式不能用後景執行，例如說常搭配的 pm2，如果直接用 pm2 啟動 Container 會直接退出；  
+有一點要注意的是 **Container 當執行完成後會自動退出**，所以 Container 內部的程式不能用後景執行，例如說常搭配使用的 pm2，如果直接用 pm2 啟動 Container 會直接退出；  
 必須改用 pm2-runtime  Docker Image 或是用 pm2-docker 啟用。
 
 ---
