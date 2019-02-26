@@ -21,6 +21,17 @@
 
 ## Bridge Network
 
+```
+|-------------------------------------|
+|                                     |
+| |------------|      |------------|  |
+| | Container1 <----->| Container2 |  |
+| |------------|      |------------|  |
+|                                     |
+|-------------------------------------|
+Docker Host
+```
+
 Bridge Network 適用於同一個 Docker Host 下的 Container 通信，Bridge 設定主要儲存於 Docker Host 當中，所以如果需要跨 Docker Host 通信就需要使用 Overlay Network\(基於 Host OS Level 的網路設定\)
 
 當安裝完 Docker 後，會有預設的 Bridge Network，用戶也可以後續自訂 Bridge Network；  
@@ -138,9 +149,6 @@ $ ping -c 2 alpine2
 
 1. [Use bridge networks](https://docs.docker.com/network/bridge/)
 2. [Networking with standalone containers](https://docs.docker.com/network/network-tutorial-standalone/)
-
-  
-
 
 #  {#title}
 
