@@ -1,8 +1,12 @@
-基礎用法、工具都熟悉了，接著要開始組合 Services，一個完整的應用程式會由許多的子服務所構成，例如說一個網站通常會有 前端、 Api Server、資料庫等，這些就是一個一個的子服務；
+經過了幾個章節，介紹了 Docker 的源起，Image 的構成與 Container 的概念，Volume 的使用與 Network 通信的方式。
 
-通常一個子服務便是一個 Image，但 Image 間如果需要通信，必須要定義對外開放的 port、處於哪個 network、要啟用幾份 Container等，這也就是 Docker Composer 的功能。
+接著就要開始擴展 Container 的使用，一般來說應用程式會由多個服務構成，每個服務通常代表一個 Image，依照需求執行一到多個 Container，如果每個都要手動管理那會累得半死。
+
+這一章要介紹 Docker-Composer，透過設定檔一次性啟用整個應用程式於同一個 Docker Host上。
 
 以下實作 Nodejs Api Server 連線 MongoDB 與 Redis。
+
+
 
 //TBD
 
