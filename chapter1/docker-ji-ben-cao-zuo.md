@@ -1,7 +1,7 @@
 # 前言
 
 先到 docker hub 下載對應平台的 [Docker CE \(Comunity Edition\)](https://hub.docker.com/search?q=docker&type=edition&offering=community)  
-Docker 目前有 CE / EE 兩種版本，EE 需要付費主要提供企業用，看起來是差在版本維護的時間與後續的客戶服務。
+Docker 目前有 CE / EE 兩種版本，EE 需要付費主要提供企業用。
 
 docker 有幾個常用的網域名
 
