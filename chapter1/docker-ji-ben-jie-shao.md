@@ -61,7 +61,7 @@ Container 是屬於 Process Level 的 Isolation。
 
 \(以上內容擷取自參考資料\)
 
-Docker 便是基於 LXC開發，所以只能運行在 Linux 環境上，至於 Mac 透過 Virtualbox / WIndows 透過 Hyper-V 先創建Linux VM，在VM中才又運行 Docker。
+Docker 便是基於 LXC開發，所以只能運行在 Linux 環境上，至於 Mac 透過 Virtualbox / Windows 透過 Hyper-V 先創建Linux VM，在VM中才又運行 Docker。
 
 延伸閱讀：[Understanding the Docker Internals](https://medium.com/@nagarwal/understanding-the-docker-internals-7ccb052ce9fe)
 
@@ -75,7 +75,7 @@ Docker 便是基於 LXC開發，所以只能運行在 Linux 環境上，至於 M
 
 這樣帶來的實質差異是
 
-VM會吃掉相當多的資源，如 Windows OS Image 就十幾GB，但好處是要應用程式可以使用OS全部的資源、修改OS層級系統設定、安全\( OS level isolation\)相關的控管 會比較方便；
+VM會吃掉相當多的資源，如 Windows OS Image 就十幾GB，但好處是要應用程式可以使用OS全部的資源、修改OS層級系統設定、安全\( OS level isolation\)相關的控管會比較方便；
 
 而 Container 好處在於輕量、啟動快速等。
 
