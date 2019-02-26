@@ -40,6 +40,8 @@ hello-world         latest              fce289e99eb9        7 weeks ago         
 
 ```
 $ docker ps
+// 等同於
+$ docker container ls
 
 $ docker ps -a
 
@@ -100,7 +102,7 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 [copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 是指當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的指標，除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
 如果應用在大量讀取的場景，這樣的做法可以大量降低 File I/O 並提升效能。
 
-先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的指標，但例如說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變。
+先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但例如說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變。
 
 # 本章參考資料
 

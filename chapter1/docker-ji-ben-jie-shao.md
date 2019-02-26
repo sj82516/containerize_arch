@@ -59,7 +59,7 @@ Docker 常用於
 虛擬化的另一個好處是 Isolation\(隔離\)，限制每個 Container 運作時只能存取自己的資源，比較安全外同時一個 Container 掛掉也不會影響到其他 Container 的運作；  
 Container 是屬於 Process Level 的 Isolation。
 
-\(以上內容擷取自參考資料\)
+\(以上內容擷取自 Wiki參考資料\)
 
 Docker 便是基於 LXC開發，所以只能運行在 Linux 環境上，至於 Mac 透過 Virtualbox / Windows 透過 Hyper-V 先創建Linux VM，在VM中才又運行 Docker。
 
