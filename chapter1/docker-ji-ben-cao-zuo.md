@@ -93,7 +93,7 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 當透過 Image 創建 Container時，會在原有的 Image Layers 上多加一層可讀寫的 Layer 層，所有 Container 的更動都會被保存在這一層。
 
-這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**! 對於空間上有相當大的幫助，同時也不用每次都要重新下載重複的資料。
+這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**! 對於空間上有相當大的幫助，也不用每次重新下載重複的資料。
 
 ## The copy-on-write \(CoW\) strategy {#the-copy-on-write-cow-strategy}
 
