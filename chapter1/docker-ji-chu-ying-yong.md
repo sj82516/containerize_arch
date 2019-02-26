@@ -65,7 +65,7 @@ CMD [ "npm", "start" ]
    1. shell form： RUN &lt;command&gt;
 
    2. exec form：RUN \["executable", "param1", "param2"\]  
-      兩者差異在於 shell form 每次執行都是新的 Command Shell，也就是兩個 shell form 之間如果有變數設定是互相看不到，而 exec form 並不會觸發 **Command Shell**
+      兩者差異在於 shell form 每次執行都是新的 Command Shell，也就是兩個 shell form 之間如果有變數設定是互相看不到，而 exec form 並不會觸發 **Command Shell**，可以用來指定不同的 shell 執行
 
 5. EXPOSE  
    當 Container 運行時所 listen的 port number，預設為 TCP 但也可以指定為 UDP EXPOSE 80/UDP
