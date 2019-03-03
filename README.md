@@ -13,11 +13,11 @@
 將需求具體化與目標化  
 希望透過 Containerize 應用程式，解決
 
-1. 開發與部屬環境的差異
+1. 開發與正式環境的差異
 2. 降低部署時間
 3. 版本控制
 
-透過 Container Orchestration 解決
+透過 Container Orchestration 解決 \(待驗證\)
 
 1. 多個 Container 間的協作關係
 2. Container Scale out / Scale up 管理

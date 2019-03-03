@@ -96,7 +96,7 @@ volumes:
 
 常見的參數有
 
-1. version:   
+1. version:  
    指定版本號
 
 2. services：  
