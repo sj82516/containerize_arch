@@ -2,7 +2,11 @@
 
 接著就要開始擴展 Container 的使用，一般來說應用程式會由多個服務構成，每個服務通常代表一個 Image，依照需求執行一到多個 Container，如果每個都要手動管理那會累得半死。
 
-這一章要介紹 Docker-Composer，透過設定檔一次性啟用整個應用程式於同一個 Docker Host上。
+這一章要介紹 Docker-Composer，透過設定檔一次性啟用整個應用程式於同一個 Docker Host上，常見的用途有
+
+1. 開發環境
+2. CI/CD 建置環境
+3. 單主機上的服務
 
 以下實作 Nodejs Api Server 連線 MongoDB 與 Redis。
 
@@ -30,7 +34,7 @@ MongoClient.connect("mongodb://mongodb:27017", function(err, client) {
   // Use the admin database for the operation
   const logCollection = client.db("test").collection("log");
   // List all the available databases
-  
+
   // App
   const app = express();
   app.get('/', async (req, res) => {
@@ -49,7 +53,7 @@ MongoClient.connect("mongodb://mongodb:27017", function(err, client) {
 });
 ```
 
-## 定義 docker-compose.yml 
+## 定義 docker-compose.yml
 
 ```yml
 version: '3.7'
@@ -92,7 +96,7 @@ volumes:
 
 常見的參數有
 
-1. version: 
+1. version:   
    指定版本號
 
 2. services：  
@@ -111,7 +115,7 @@ volumes:
       指定對外開放與連接 Host 的 port mapping
 
    5. depends_on：  
-      docker-compose 預設並行啟用 container，_如果有服務前後相依就必須設定_ depends\__on  
+      docker-compose 預設並行啟用 container，_如果有服務前後相依就必須設定\_ depends\_\_on  
       例如web service 相依於 mongodb 與 redis
 
    6. container\_name：  
@@ -141,17 +145,10 @@ $ docker-compose ps
 $ docker-compose down
 ```
 
-# 預設行為
-
-
-
 # 參考資料
 
 1. [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
 2. [Overview of Docker Compose](https://docs.docker.com/compose/overview/)
-
-  
-
 
 
 
