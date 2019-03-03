@@ -8,5 +8,6 @@
   * [Image 管理](chapter1/image-guan-li.md)
   * [Docker Network](chapter1/docker-network.md)
   * [管理多個 Container - 使用 Docker Composer](chapter1/docker-shi-zuo-da-bao-nodejs-app-image.md)
+  * [進階討論](jin-jie-tao-lun.md)
 * [Kubernetes](kubernetes.md)
 
