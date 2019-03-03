@@ -81,9 +81,9 @@ VM會吃掉相當多的資源，如 Windows OS Image 就十幾GB，但好處是�
 
 # 進階 - LXC 與 Docker 如何實作
 
-先前提到 Docker 是基於  Linux LXC 容器化技術開發，在 Linux Kernel 中，並不存在所謂的 LXC，所謂的 LXC 其實是工具組的統稱 
+先前提到 Docker 是基於  Linux LXC 容器化技術開發，在 Linux Kernel 中，並不存在所謂的 LXC，所謂的 LXC 其實是工具組的統稱
 
-1. cgroup
+1. cgroup  
    限制 container 能做到哪些事，在系統中將物理資源做分配，並以虛擬化的層級形式顯示；  
    有趣的是系統預設就是在一個沒有做任何資源限制的 container 當中，所以不需要在懷疑 container 是否會對性能有多大的影響，因為你就在 container 當中。
 
@@ -94,17 +94,17 @@ VM會吃掉相當多的資源，如 Windows OS Image 就十幾GB，但好處是�
    3. Blkio  
       IO 相關限制，例如 Disk 讀寫速度等
 
-2. namespace
+2. namespace  
    限制 process 能看到系統的哪些資源
 
-   1. Mount\(mnt\)
+   1. Mount\(mnt\)  
       只能讀寫特定的資料夾
 
    2. PID  
       只能看到某些 process
 
    3. IPC  
-      不能使用 pipe , share memory 當作跨 process 通信機制
+      不能使用 pipe , share memory 當作 process間通信機制
 
    4. UTS  
       限制 hostname / domain name
@@ -115,11 +115,8 @@ VM會吃掉相當多的資源，如 Windows OS Image 就十幾GB，但好處是�
 參考資料：
 
 [This Is How Docker Works, The Fun Way!](https://www.youtube.com/watch?v=-NzfOhSAZpA&t=72s)  
-講者使用 Golang 實作簡單的 Docker，主要先起一個 parent process，接著接收用戶輸入的指令，並在 fork child process 中設定 namespace，達到資源限制的設定。
+講者使用 Golang 實作簡單的 Docker，主要先起一個 parent process，接著接收用戶輸入的指令，並在 fork child process 時設定 namespace，達到資源限制的設定。
 
 [Cgroups, namespaces, and beyond: what are containers made from?](https://www.youtube.com/watch?v=sK5i-N34im8)  
 Docker 內部工程師的分享，對 cgroup 與 namespace 有更深入的講解，並在最後 Demo 實作一個 Container。
-
-  
-
 

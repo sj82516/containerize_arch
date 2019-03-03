@@ -114,7 +114,7 @@ $ docker build -f ./Dockerfile -t yuanchieh/server:1.0.0 .
 
 # 運行 Container
 
-有了Image，可以實際啟用 Container
+有了Image，就可以啟用 Container
 
 ## 前景執行
 
@@ -122,7 +122,7 @@ $ docker build -f ./Dockerfile -t yuanchieh/server:1.0.0 .
 $ docker run -p 8080:8080 yuanchieh/server
 ```
 
--p 參數是指定 \[宿主機器port\] 映射至 \[Container port\]，並需要指定 Container 才能收到外部 connection 傳送的資料
+-p 參數是指定 \[宿主機器port\] 映射至 \[Container port\]，必須指定對外開放的 port Container 才能收到外部 tcp connection 傳送的資料，也可以指定為 udp port。
 
 如果希望退出直接 Ctrl+C 即可，但 Container 因為是在前景執行所以退出後會自動停止。
 
