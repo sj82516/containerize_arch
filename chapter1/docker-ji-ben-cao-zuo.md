@@ -107,6 +107,8 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但如果說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變。
 
+進階資料可參考 [Deep dive into Docker storage drivers](https://jpetazzo.github.io/assets/2015-07-01-deep-dive-into-docker-storage-drivers.html#1)
+
 # 本章參考資料
 
 1. [About images, containers, and storage drivers](https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/)
