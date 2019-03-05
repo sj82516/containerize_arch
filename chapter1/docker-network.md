@@ -52,7 +52,7 @@ Docker 官方建議使用自定義的 Bridge，有以下優點
    但如果是用預設的 Bridge就必須要先停止 Container
 
 4. 只有預設 Network 可以用 --link 共享環境變數，自定義 Bridge 不行；  
-   但可以透過 volume 共享設定檔、docker-composer 定義在設定檔中或是用 docker-swarm 等其他做法
+   但可以透過 volume 共享設定檔、docker-compose 讀取設定檔或是用 docker-swarm 等其他做法
 
 # 實作
 

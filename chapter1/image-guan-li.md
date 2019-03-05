@@ -1,7 +1,6 @@
 當再本地端開發好 Image，執行 Container 確認沒有問題後，可以將 Image 發佈到 Repository 上，類似於 git push/pull 的概念
 
-Docker 有提供 [Docker Hub](https://hub.docker.com/)，有許多公開的 Image 可以下載，也可以付費建立私人的 Registry，例如 Nodejs / MySQL / Redis / MongoDB 等官方團隊都有管理各自的 Image，用起來也很安心；  
-另一方面也有很多熱心的開發者，自己製作出 Image 分享在上面。
+Docker 有提供 [Docker Hub](https://hub.docker.com/)，有許多公開的 Image 可以下載，例如 Nodejs / MySQL / Redis / MongoDB 等官方團隊都有管理各自的 Image。
 
 搜尋時可以用網頁，也可以在 Terminal 直接搜尋
 

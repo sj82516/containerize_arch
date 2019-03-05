@@ -21,7 +21,7 @@ $ docker --version
 Docker version 18.09.2, build 6247962
 ```
 
-接著執行
+接著執行，docker run 代表用指定 Image 啟動 Container
 
 ```
 $ docker run hello-world
@@ -53,7 +53,7 @@ d134a8629dce        hello-world         "/hello"            2 minutes ago       
 
 用比喻來說， Image 就像是食譜，而 Container 是一塊蛋糕。
 
-我們會寫一份文件 Dockerfile 定義 Image ，例如說這樣
+我們會寫一份文件 Dockerfile 定義 Image ，例如說
 
 ```
 FROM ubuntu:15.04
@@ -73,7 +73,7 @@ CMD python /app/app.py
 
 而 Container 則是指定某一個 Image 執行如 `$docker run hello-world`
 
-Dockerfile 與相關指令這後續會再提，先看一下 Image 到底是如何構成的？
+Dockerfile 與相關指令這後續會再提，先看一下 Image 到底是如何構成的。
 
 ## Image 與 Container 實質上的差異
 
@@ -95,11 +95,14 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 當透過 Image 創建 Container時，會在原有的 Image Layers 上多加一層可讀寫的 Layer 層，所有 Container 的更動都會被保存在這一層。
 
-這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**! 對於空間上有相當大的幫助，也不用每次重新下載重複的資料。
+這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**!  對於空間上有相當大的幫助，也不用每次重新下載重複的資料。
+
+至於 Docker 是如何將各層 Layer 分散儲存，執行時又如何將 Layer 封裝成一個完整 Image，這就要靠 Docker Storage Driver，有興趣可以比較各個 [Storage Driver](https://docs.docker.com/storage/storagedriver/select-storage-driver/)，但沒有特別需求用預設即可。
 
 ## The copy-on-write \(CoW\) strategy {#the-copy-on-write-cow-strategy}
 
-[copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 是指當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的指標，除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
+[copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 是指當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的指標，所有人都共用同一份；  
+除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
 如果應用在大量讀取的場景，這樣的做法可以大量降低 File I/O 並提升效能。
 
 先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但如果說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變。
