@@ -101,7 +101,7 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 ## The copy-on-write \(CoW\) strategy {#the-copy-on-write-cow-strategy}
 
-[copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 是指當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的指標，所有人都共用同一份；  
+[copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 是指當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的同一份指標，所有人都共用一份；  
 除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
 如果應用在大量讀取的場景，這樣的做法可以大量降低 File I/O 並提升效能。
 

@@ -145,6 +145,8 @@ $ docker-compose ps
 $ docker-compose down
 ```
 
+可參考程式碼 [https://github.com/sj82516/nodejs\_dockerize\_demo](https://github.com/sj82516/nodejs_dockerize_demo)
+
 # 參考資料
 
 1. [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
