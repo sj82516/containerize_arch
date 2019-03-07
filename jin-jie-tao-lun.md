@@ -4,5 +4,11 @@
 
 很顯然 Database 就是 Stateful APP，他必須永久保存資料，如果有 Replica Set 設定檔也是個問題，所以作者不建議在正式環境將 Database 放在 Docker 中執行，畢竟資料是最重要的，不要增加不必要的運營風險。
 
+# security
 
+// TBD
+
+# Best Practice in Production
+
+//TBD
 
