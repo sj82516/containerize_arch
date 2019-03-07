@@ -123,7 +123,7 @@ $ docker run -p 8080:8080 yuanchieh/server
 ```
 
 -p 參數是指定 \[宿主機器port\] 映射至 \[Container port\]，必須指定對外開放的 port Container 才能收到外部 tcp connection 傳送的資料，也可以指定為 udp port；  
-這部分 Docker 是透過 **`iptable`** 管理，類似於 NAT 轉發封包的角色。
+這部分 Docker 是透過 `iptable` 管理，類似於 NAT 轉發封包的角色。
 
 如果希望退出直接 Ctrl+C 即可，但 Container 因為是在前景執行所以退出後會自動停止。
 
@@ -188,5 +188,13 @@ $ docker volume create hello
 $ docker run -d -p 8080:8080 -v hello:/world yuanchieh/server
 ```
 
-在使用 volume時，如果希望指定宿主環境的某一個資料夾，目前必須安裝 Docker Plugin  [local-persist](https://github.com/CWSpear/local-persist)
+在創建 volume時，如果希望指定宿主環境的某一個資料夾，目前必須安裝 Docker Plugin  [local-persist](https://github.com/CWSpear/local-persist)
+
+另一種方式是直接指定 Host資料夾路徑
+
+```
+$ docker run -d -p 8080:8080 -v /host/path/to:/world yuanchieh/server
+```
+
+
 

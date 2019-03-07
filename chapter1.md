@@ -4,6 +4,8 @@
 
 Docker 主要是基於 Linux LXC 技術開發，提供一個虛擬化的環境運行 Containers，Container \(譯作容器、或是貨櫃\)，顧名思義即是將內容物封裝的一種方式，封裝成容器後隔離了跟實體主機\(Host Machine\)耦合，不論是運行在個人筆電上、雲端伺服器上、虛擬機上等等，都會得到相同的運作機制。
 
+Docker 是由三個部分組成，最內層 Docker Daemon 負責運行 Container，外圍則提供 REST API / Cli 使用；![](/assets/engine-components-flow.png)
+
 Docker 常用於
 
 1. 自動化打包與部屬應用程式

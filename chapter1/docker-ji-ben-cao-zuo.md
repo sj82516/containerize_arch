@@ -95,7 +95,7 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 當透過 Image 創建 Container時，會在原有的 Image Layers 上多加一層可讀寫的 Layer 層，所有 Container 的更動都會被保存在這一層。
 
-這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**!  對於空間上有相當大的幫助，也不用每次重新下載重複的資料。
+這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**!  對於空間上有相當大的幫助，啟動 Container更快速。
 
 至於 Docker 是如何將各層 Layer 分散儲存，執行時又如何將 Layer 封裝成一個完整 Image，這就要靠 Docker Storage Driver，有興趣可以比較各個 [Storage Driver](https://docs.docker.com/storage/storagedriver/select-storage-driver/)，但沒有特別需求用預設即可。
 
@@ -107,7 +107,7 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但如果說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變。
 
-進階資料可參考 [Deep dive into Docker storage drivers](https://jpetazzo.github.io/assets/2015-07-01-deep-dive-into-docker-storage-drivers.html#1)
+進階資料可參考 [Deep dive into Docker storage drivers](https://jpetazzo.github.io/assets/2015-07-01-deep-dive-into-docker-storage-drivers.html#1) ，描述多種 Storage Driver 的不同與實踐。
 
 # 本章參考資料
 
