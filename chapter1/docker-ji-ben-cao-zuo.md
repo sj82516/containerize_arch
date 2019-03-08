@@ -97,7 +97,8 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 
 這樣設計的好處是 如果同一個 Layer 被多個 Image 所共用，又或是同一個 Image 被多個 Container 所使用，**全部在 Disk 只要儲存一份**!  對於空間上有相當大的幫助，啟動 Container更快速。
 
-至於 Docker 是如何將各層 Layer 分散儲存，執行時又如何將 Layer 封裝成一個完整 Image，這就要靠 Docker Storage Driver，有興趣可以比較各個 [Storage Driver](https://docs.docker.com/storage/storagedriver/select-storage-driver/)，但沒有特別需求用預設即可。
+Docker 將各層 Layer 分散儲存，資料夾分散在 Host ，執行時 Docker Storage Driver會負責將所有 Layer 組裝成一個完整如同 OS 的 Image；  
+如果如果 Host用 Linux可以在 /var/lib/docker 下看到所有 Layer 實際儲存方式，至於 MacOS 與 Windows 因為 Docker 是運行在 VM上要實際觀察就比較困難，有興趣可以深入閱讀 [Storage Driver](https://docs.docker.com/storage/storagedriver/select-storage-driver/)。
 
 ## The copy-on-write \(CoW\) strategy {#the-copy-on-write-cow-strategy}
 
@@ -105,9 +106,10 @@ Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每�
 除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
 如果應用在大量讀取的場景，這樣的做法可以大量降低 File I/O 並提升效能。
 
-先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但如果說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變。
+先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但假設說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變；  
+刪除檔案也是同樣的步驟，只是會在 R/W Layer 產生一個 .wh.\* 的檔案，表示這個資料被移除\(whiteout\)
 
-進階資料可參考 [Deep dive into Docker storage drivers](https://jpetazzo.github.io/assets/2015-07-01-deep-dive-into-docker-storage-drivers.html#1) ，描述多種 Storage Driver 的不同與實踐。
+進階資料可參考 [Deep dive into Docker storage drivers](https://jpetazzo.github.io/assets/2015-07-01-deep-dive-into-docker-storage-drivers.html#1) ，描述多種 Storage Driver 的不同 CoW 實踐。
 
 # 本章參考資料
 
