@@ -183,7 +183,7 @@ $ docker run -d -p 8080:8080 -v hello:/world yuanchieh/server
 
 在創建 volume時，如果希望指定宿主環境的某一個資料夾，目前必須安裝 Docker Plugin  [local-persist](https://github.com/CWSpear/local-persist)
 
-另一種方式是直接指定 Host資料夾路徑
+另一種方式是直接指定 Host資料夾路徑，這樣缺點是 volume 沒有名稱，使用 `$docker volume ls`會無法確認。
 
 ```
 $ docker run -d -p 8080:8080 -v /host/path/to:/world yuanchieh/server
