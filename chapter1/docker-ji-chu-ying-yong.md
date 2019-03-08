@@ -28,19 +28,12 @@ console.log(`Running on http://${HOST}:${PORT}`);
 ```js
 FROM node:8
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
 COPY package*.json ./
 
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Bundle app source
 COPY . .
 
 EXPOSE 8080
@@ -50,7 +43,7 @@ CMD [ "npm", "start" ]
 一般來說Dockerfile 有幾個常用的參數
 
 1. FROM  
-   指定用哪一個 Image 當做基底，此欄位**必填且必須為Dockerfile 第一個指令**
+   指定用哪一個 Image 當做基底，此欄位**必填且必須為Dockerfile 第一個指令**，預設會從本地端找起，找不到就會往 Docker Repository查詢 \(預設是 Docker Hub\)
 
 2. WORKDIR  
    設定運作的當前目錄，影響的指令有 RUN / CMD / ENREYPOINT / COPY / ADD，如果指定的 WORKDIR 不存在會自動創建

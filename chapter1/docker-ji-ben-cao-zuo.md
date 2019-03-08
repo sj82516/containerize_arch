@@ -7,7 +7,7 @@ docker 有幾個常用的網域名
 
 1. [docker.com](https://www.docker.com/)：
    官網，有一些消息發布
-2. hub.docker.co[https://hub.docker.com/](https://hub.docker.com/)m：  
+2. [https://hub.docker.com/](https://hub.docker.com/)：  
    docker images 發布的地方
 
 3. [https://docs.docker.com](https://docs.docker.com)  
