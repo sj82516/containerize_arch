@@ -77,7 +77,7 @@ Dockerfile 與相關指令這後續會再提，先看一下 Image 到底是如�
 
 ## Image 與 Container 實質上的差異
 
-更細部了解 Image 的儲存方式，可以幫助我們製作出更正確的使用 Docker
+更細部了解 Image 的儲存方式，可以幫助我們更正確的使用 Docker
 
 回想一下在部署程式碼到雲端主機上時，步驟通常會是
 
@@ -89,7 +89,7 @@ Dockerfile 與相關指令這後續會再提，先看一下 Image 到底是如�
 
 仔細思考一下，每一個步驟就好像一層一層的 Layer，我們不斷的在基底 OS上增加需要的工具，通常這些步驟也不太會去更動，除了一些設定檔以外。
 
-Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每一層 Layer 會有一個對應的 Hash碼，這些 Layer 是唯讀不可更動，由唯讀的 Layer 組成 Image 本身也是唯讀的；
+Docker Image 也是運用同樣的概念，由一層一層的Layer 組成，每一層 Layer 會有一個對應的 Hash Code，這些 Layer 是唯讀不可更動，由唯讀的 Layer 組成 Image 本身也是唯讀的；
 
 ![](/assets/container-layers.jpg)
 
@@ -102,7 +102,7 @@ Docker 將各層 Layer 分散儲存，資料夾分散在 Host ，執行時 Docke
 
 ## The copy-on-write \(CoW\) strategy {#the-copy-on-write-cow-strategy}
 
-[copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 是指當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的同一份指標，所有人都共用一份；  
+[copy-on-write](https://zh.wikipedia.org/wiki/寫入時複製) 當有多個呼叫者想要讀取同一份檔案，系統會直接回傳該文件的同一份指標，所有人都共用一份；  
 除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
 如果應用在大量讀取的場景，這樣的做法可以大量降低 File I/O 並提升效能。
 
