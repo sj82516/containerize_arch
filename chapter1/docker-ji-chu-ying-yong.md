@@ -43,7 +43,7 @@ CMD [ "npm", "start" ]
 一般來說Dockerfile 有幾個常用的參數
 
 1. FROM  
-   指定用哪一個 Image 當做基底，此欄位**必填且必須為Dockerfile 第一個指令**，預設會從本地端找起，找不到就會往 Docker Repository查詢 \(預設是 Docker Hub\)
+   指定用哪一個 Image 當做基底，此欄位**必填且必須為Dockerfile 第一個指令**
 
 2. WORKDIR  
    設定運作的當前目錄，影響的指令有 RUN / CMD / ENREYPOINT / COPY / ADD，如果指定的 WORKDIR 不存在會自動創建
@@ -160,7 +160,7 @@ $ docker commit [container id] [image name]
 
 # 永久化保存資料 Docker Volume
 
-先前提到，Container 在運行時其實是在 Image 上多一層可讀寫的 R/W layer，但是這些資料只會保存在 Container 當中，如果希望這些資料永久被保存下來，就必須透過 volume
+先前提到，Container 在運行時其實是在 Image 上多一層可讀寫的 R/W layer，但是這些資料只會保存在 Container 當中，如果希望這些資料永久被保存在 Host 上，就必須透過 volume
 
 volume 可以應用在以下場景
 
@@ -169,7 +169,7 @@ volume 可以應用在以下場景
 3. 透過不同 Driver，可以儲存在本機端或是雲端等
 4. 可以先放資料再掛載到 Container 上
 
-其餘像資料庫的資料、Log由 Container 內部運行所產生的資料，都非常適用放在 Volume中，盡量降低 Container 的尺寸，同時不影響搬移的方便性。
+其餘像資料庫的資料、Log由 Container 內部運行所產生的資料，都非常適用放在 Volume中，盡量降低 Container 的尺寸。
 
 ```
 $ docker volume create hello

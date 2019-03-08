@@ -21,7 +21,7 @@ $ docker --version
 Docker version 18.09.2, build 6247962
 ```
 
-接著執行，docker run 代表用指定 Image 啟動 Container
+接著執行，docker run 代表用指定 Image 啟動 Container，Image 預設會從本地端找起，找不到就會往 Docker Repository查詢 \(預設是 Docker Hub\)
 
 ```
 $ docker run hello-world
@@ -106,7 +106,7 @@ Docker 將各層 Layer 分散儲存，資料夾分散在 Host ，執行時 Docke
 除非當有一位呼叫者要修改文件時，系統才會真正複製一份給該呼叫者，其餘呼叫者維持原文件的指標。  
 如果應用在大量讀取的場景，這樣的做法可以大量降低 File I/O 並提升效能。
 
-先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的空間指標，但假設說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變；  
+先前提到 Docker Image 中的 Layer 都是唯讀，所以共用 Image的多個 Container 都是拿到同樣的指標，但假設說 Container 在運作中想要修改 Nginx Config 檔案，就會個別寫入在 Container 的 R/W layer，後續讀取也是讀到 R/W layer 修改過後的結果，而原本的 Nginx Layer 中的檔案維持不變；  
 刪除檔案也是同樣的步驟，只是會在 R/W Layer 產生一個 .wh.\* 的檔案，表示這個資料被移除\(whiteout\)
 
 進階資料可參考 [Deep dive into Docker storage drivers](https://jpetazzo.github.io/assets/2015-07-01-deep-dive-into-docker-storage-drivers.html#1) ，描述多種 Storage Driver 的不同 CoW 實踐。
